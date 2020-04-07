@@ -15,6 +15,7 @@
 		D4367578243CEBEE0004A1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4367576243CEBEE0004A1C1 /* LaunchScreen.storyboard */; };
 		D4367583243CEBEE0004A1C1 /* FactsCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4367582243CEBEE0004A1C1 /* FactsCheckTests.swift */; };
 		D436758E243CEBEE0004A1C1 /* FactsCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436758D243CEBEE0004A1C1 /* FactsCheckUITests.swift */; };
+		DC168C425F9B4F927EA509C8 /* Pods_FactsCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		942959A57404AB628359D038 /* Pods-FactsCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsCheck.debug.xcconfig"; path = "Target Support Files/Pods-FactsCheck/Pods-FactsCheck.debug.xcconfig"; sourceTree = "<group>"; };
+		977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsCheck.release.xcconfig"; path = "Target Support Files/Pods-FactsCheck/Pods-FactsCheck.release.xcconfig"; sourceTree = "<group>"; };
 		D4367568243CEBEC0004A1C1 /* FactsCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactsCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D436756B243CEBEC0004A1C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D436756D243CEBEC0004A1C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		D4367589243CEBEE0004A1C1 /* FactsCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FactsCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D436758D243CEBEE0004A1C1 /* FactsCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsCheckUITests.swift; sourceTree = "<group>"; };
 		D436758F243CEBEE0004A1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC168C425F9B4F927EA509C8 /* Pods_FactsCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8757E44AC99CAFBFA51C57D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				942959A57404AB628359D038 /* Pods-FactsCheck.debug.xcconfig */,
+				977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		98C6CB5E89FBB10BECFE6312 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D436755F243CEBEC0004A1C1 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +105,8 @@
 				D4367581243CEBEE0004A1C1 /* FactsCheckTests */,
 				D436758C243CEBEE0004A1C1 /* FactsCheckUITests */,
 				D4367569243CEBEC0004A1C1 /* Products */,
+				8757E44AC99CAFBFA51C57D3 /* Pods */,
+				98C6CB5E89FBB10BECFE6312 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +159,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4367592243CEBEE0004A1C1 /* Build configuration list for PBXNativeTarget "FactsCheck" */;
 			buildPhases = (
+				ECAB8EB8E95F62931A3167A8 /* [CP] Check Pods Manifest.lock */,
 				D4367564243CEBEC0004A1C1 /* Sources */,
 				D4367565243CEBEC0004A1C1 /* Frameworks */,
 				D4367566243CEBEC0004A1C1 /* Resources */,
@@ -253,6 +278,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ECAB8EB8E95F62931A3167A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FactsCheck-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4367564243CEBEC0004A1C1 /* Sources */ = {
@@ -432,6 +482,7 @@
 		};
 		D4367593243CEBEE0004A1C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 942959A57404AB628359D038 /* Pods-FactsCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +501,7 @@
 		};
 		D4367594243CEBEE0004A1C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
