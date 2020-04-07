@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class FactsViewController: UIViewController {
 
+    let viewModel = FactsViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        viewModel.refreshFacts()
     }
-
-
 }
-
