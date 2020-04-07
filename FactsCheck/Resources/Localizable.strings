@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  FactsCheck
+
+  Created by Praveen P on 08/04/20.
+  Copyright © 2020 Praveen P. All rights reserved.
+*/
+
+"BaseUrl" = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";

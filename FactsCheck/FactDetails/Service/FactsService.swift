@@ -18,7 +18,7 @@ typealias FactsCompletionHandler = (FactDetails?, FactsError?) -> Void
 
 enum FactsService {
     
-    static let hostUrl = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")
+    static let hostUrl = URL(string: BaseUrl.localized)
     
      //make the API call to get model
     static func fetchFactsList(completion: @escaping FactsCompletionHandler) {
@@ -26,6 +26,15 @@ enum FactsService {
         guard let url = hostUrl else {
             completion(nil, .urlInvalid)
             return
+        }
+        
+        NetworkManager.makeService(url: url, responseType: FactDetails.self) { result in
+            switch result {
+                case let .success(model):
+                     completion(model as? FactDetails, nil)
+                case .failure(_):
+                    completion(nil, .serviceError)
+            }
         }
     }
 }
