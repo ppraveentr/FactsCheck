@@ -28,4 +28,7 @@ final class FactsViewController: UIViewController {
 }
 
 extension FactsViewController: FactsViewModelProtocol {
+    func refreshTitle() {
+        self.title = viewModel.title()
+    }
 }

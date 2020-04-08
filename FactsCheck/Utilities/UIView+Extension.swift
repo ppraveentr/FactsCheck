@@ -58,6 +58,12 @@ extension UIView {
 }
 
 extension UIViewController {
+    static func navigationController() -> UINavigationController {
+        let viewController = self.init()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        return navigationController
+    }
+    
     func embedController(_ child: UIViewController, completion: (_ view: UIView) -> Void) {
         self.addChild(child)
         completion(child.view)

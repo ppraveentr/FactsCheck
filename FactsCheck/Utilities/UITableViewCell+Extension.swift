@@ -17,13 +17,6 @@ extension UITableViewCell {
         tableView.register(self, forCellReuseIdentifier: reuseIdentifier ?? defaultReuseIdentifier)
     }
     
-    static func dequeue(from tableView: UITableView) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: defaultReuseIdentifier) else {
-            fatalError("Unable to dequeue cell with reuse identifier '\(defaultReuseIdentifier)'")
-        }
-        return cell
-    }
-    
     static func dequeue<T: UITableViewCell>(from tableView: UITableView, for indexPath: IndexPath) -> T {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: defaultReuseIdentifier, for: indexPath) as? T else {
             fatalError("Unable to dequeue cell of type \(T.self) with reuse identifier '\(defaultReuseIdentifier)'")
