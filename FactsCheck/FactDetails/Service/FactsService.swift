@@ -28,11 +28,18 @@ enum FactsService {
             return
         }
         
+        // make api call to fetch details.
         NetworkManager.makeService(url: url, responseType: FactDetails.self) { result in
             switch result {
-                case let .success(model):
-                     completion(model as? FactDetails, nil)
-                case .failure(_):
+                case let .success(model) where model is FactDetails:
+                    // onSuccess, remove invlaid details from the list
+                    if var details = (model as? FactDetails) {
+                        details.trimInvalidFacts()
+                        // and update view
+                        completion(details, nil)
+                    }
+                default:
+                    // onError
                     completion(nil, .serviceError)
             }
         }

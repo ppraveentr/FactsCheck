@@ -29,19 +29,33 @@ extension UIView {
         guard let superview = superview else {
             return
         }
+         translatesAutoresizingMaskIntoConstraints = false
         if edge.contains(.top) {
-            superview.topAnchor.constraint(equalTo: self.topAnchor, constant: edgeInsets.top).isActive = true
+            topAnchor.constraint(equalTo: superview.topAnchor, constant: edgeInsets.top).isActive = true
         }
         if edge.contains(.left) {
-            superview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: edgeInsets.left).isActive = true
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: edgeInsets.left).isActive = true
         }
         if edge.contains(.bottom) {
-            superview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: edgeInsets.bottom).isActive = true
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: edgeInsets.bottom).isActive = true
         }
         if edge.contains(.right) {
-            superview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: edgeInsets.right).isActive = true
+            trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: edgeInsets.right).isActive = true
         }
     
+        setNeedsLayout()
+    }
+    
+    func anchor(constraints: [String], viewsDict: [String: UIView]) {
+        viewsDict.forEach { _, view in
+            addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        constraints.forEach { co in
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: co, options: [], metrics: nil, views: viewsDict))
+        }
+        
         setNeedsLayout()
     }
 }

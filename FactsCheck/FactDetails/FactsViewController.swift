@@ -21,14 +21,16 @@ final class FactsViewController: UIViewController {
     func setupView() {
         viewModel.setupModel()
         
-        self.embedController(viewModel.factsTableView) { factView in
+        // Embed tableView as container
+        self.embedController(viewModel.contentView) { factView in
             self.view.embedView(factView)
         }
     }
 }
 
-extension FactsViewController: FactsViewModelProtocol {
+extension FactsViewController: FactsViewDelegate {
     func refreshTitle() {
+        // Update view's title
         self.title = viewModel.title()
     }
 }

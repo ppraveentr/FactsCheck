@@ -18,8 +18,20 @@ struct FactDetails: Codable {
     }
 }
 
+extension FactDetails: Equatable {
+    mutating func trimInvalidFacts() {
+        facts = facts?.filter { $0.isValid }
+    }
+}
+
 struct Fact: Codable {
     var title: String?
     var description: String?
     var imageHref: String?
+}
+
+extension Fact: Equatable {
+    var isValid: Bool {
+        return title != nil || description != nil || imageHref != nil
+    }
 }
