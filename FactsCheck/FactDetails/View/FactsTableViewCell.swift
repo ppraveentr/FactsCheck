@@ -9,9 +9,12 @@
 import UIKit
 
 class FactsTableViewCell: UITableViewCell {
+    static let kFactsCellIdentifier = "FactsTableViewCell"
+
     var model: Fact?
     
     func configureContent(model: Fact) {
         self.model = model
+        self.textLabel?.text = model.title
     }
 }

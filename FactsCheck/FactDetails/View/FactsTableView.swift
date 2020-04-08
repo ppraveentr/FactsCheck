@@ -10,10 +10,23 @@ import UIKit
 
 final class FactsTableView: UITableViewController {
     
-    private var factDetails: FactDetails?
+    private var dataSourceModel: FactsTableViewModelProtocol
     
-    func refreshView(model: FactDetails?) {
-        factDetails = model
+    init(_ source: FactsTableViewModelProtocol) {
+        dataSourceModel = source
+        super.init(style: .grouped)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView() {
+        FactsTableViewCell.registerClass(for: self.tableView)
+    }
+    
+    func refreshView() {
         self.tableView.reloadData()
     }
     
@@ -30,16 +43,14 @@ final class FactsTableView: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return factDetails?.facts?.count ?? 0
+        return dataSourceModel.numberOfRowsInSection()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "kNovelCellIdentifier", for: indexPath)
+        let cell: FactsTableViewCell = FactsTableViewCell.dequeue(from: tableView, for: indexPath)
         
-        if
-            let cell = cell as? FactsTableViewCell,
-            let fact = factDetails?.facts?[indexPath.row] {
+        if let fact = dataSourceModel.data(atIndexPath: indexPath) {
             cell.configureContent(model: fact)
         }
         

@@ -17,11 +17,23 @@ typealias CompletionHandler = (Result<Codable, NetworkError>) -> Void
 
 final class NetworkManager {
     
-    static func makeService<T: Codable>(url: URL, responseType: T.Type, completion: @escaping CompletionHandler) {
-        //create a session and dataTask on that session to get data/response/error
-        let session = URLSession.shared
+    //create a session and dataTask on that session to get data/response/error
+    private static let session: URLSession = URLSession.shared
+
+    static func makeService<T: Codable>(url: URL, responseType: T.Type, completion: CompletionHandler?) {
+        
+        // stubbing data for testing
+        if let mockData = self.mockData(responseType: responseType) {
+            DispatchQueue.main.async {
+                completion?(.success(mockData))
+            }
+            return
+        }
         
         let dataTask = session.dataTask(with: url) { (data, response, networkError) in
+            // parsing not requied if completion is provided
+            guard let completion = completion else { return }
+            
             do {
                 //unwrap returned data
                 let properData = try formatedData(data)
@@ -64,5 +76,19 @@ private extension NetworkManager {
     static func encodedData<T: Codable>(_ jsonData: Data) throws -> T {
         let model = try JSONDecoder().decode(T.self, from: jsonData)
         return model
+    }
+}
+
+extension NetworkManager {
+    static func mockData<T: Codable>(responseType: T.Type) -> T? {
+        if let path = Bundle.main.path(forResource: "Mockfacts", ofType: "json") {
+            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
+                // parse unwrappedData to Codable Model as requested
+                if let properData = try? formatedData(data) {
+                    return try? encodedData(properData)
+                }
+            }
+        }
+        return nil
     }
 }

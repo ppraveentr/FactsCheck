@@ -11,16 +11,21 @@ import UIKit
 protocol FactsViewModelProtocol: NSObject {
 }
 
+protocol FactsTableViewModelProtocol {
+    func numberOfRowsInSection() -> Int
+    func data(atIndexPath indexPath: IndexPath) -> Fact?
+}
+
 final class FactsViewModel {
     
     //Facts List tableView
     private(set) weak var delegate: FactsViewModelProtocol?
-    private(set) lazy var factsTableView = FactsTableView()
+    private(set) lazy var factsTableView = FactsTableView(self)
 
     //factDetails hold's the data from the backend
     var factDetails: FactDetails? {
         didSet {
-            factsTableView.refreshView(model: factDetails)
+            factsTableView.refreshView()
         }
     }
     
@@ -31,6 +36,16 @@ final class FactsViewModel {
     func setupModel() {
         //Fetch Fact details from backend
         self.refreshFacts()
+    }
+}
+
+extension FactsViewModel: FactsTableViewModelProtocol {
+    func numberOfRowsInSection() -> Int {
+        return factDetails?.facts?.count ?? 0
+    }
+    
+    func data(atIndexPath indexPath: IndexPath) -> Fact? {
+        return factDetails?.facts?[indexPath.row]
     }
 }
 
