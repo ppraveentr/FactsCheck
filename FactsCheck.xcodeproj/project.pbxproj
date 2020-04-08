@@ -14,6 +14,8 @@
 		D4367578243CEBEE0004A1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4367576243CEBEE0004A1C1 /* LaunchScreen.storyboard */; };
 		D4367583243CEBEE0004A1C1 /* FactsCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4367582243CEBEE0004A1C1 /* FactsCheckTests.swift */; };
 		D436758E243CEBEE0004A1C1 /* FactsCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436758D243CEBEE0004A1C1 /* FactsCheckUITests.swift */; };
+		D43F31CE243DB6D8009E789C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F31CD243DB6D8009E789C /* UIView+Extension.swift */; };
+		D43F31D2243DD1E6009E789C /* FactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F31D1243DD1E6009E789C /* FactsTableViewCell.swift */; };
 		D4B809C8243D09C70024EE04 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4B809C7243D09C70024EE04 /* Localizable.strings */; };
 		D4B809D1243D30530024EE04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809D0243D30530024EE04 /* NetworkManager.swift */; };
 		D4B809DA243D30590024EE04 /* FactDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809D4243D30590024EE04 /* FactDetails.swift */; };
@@ -22,6 +24,7 @@
 		D4B809DD243D30590024EE04 /* FactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809D9243D30590024EE04 /* FactsService.swift */; };
 		D4B809E0243D32FE0024EE04 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809DF243D32FE0024EE04 /* AppBundle.swift */; };
 		D4B809E2243D33590024EE04 /* FactsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809E1243D33590024EE04 /* FactsConstants.swift */; };
+		D4B809E4243D387A0024EE04 /* FactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809E3243D387A0024EE04 /* FactsTableView.swift */; };
 		DC168C425F9B4F927EA509C8 /* Pods_FactsCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,8 @@
 		D4367589243CEBEE0004A1C1 /* FactsCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FactsCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D436758D243CEBEE0004A1C1 /* FactsCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsCheckUITests.swift; sourceTree = "<group>"; };
 		D436758F243CEBEE0004A1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D43F31CD243DB6D8009E789C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		D43F31D1243DD1E6009E789C /* FactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewCell.swift; sourceTree = "<group>"; };
 		D4B809C7243D09C70024EE04 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D4B809D0243D30530024EE04 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D4B809D4243D30590024EE04 /* FactDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactDetails.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 		D4B809D9243D30590024EE04 /* FactsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsService.swift; sourceTree = "<group>"; };
 		D4B809DF243D32FE0024EE04 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
 		D4B809E1243D33590024EE04 /* FactsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsConstants.swift; sourceTree = "<group>"; };
+		D4B809E3243D387A0024EE04 /* FactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableView.swift; sourceTree = "<group>"; };
 		E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -209,6 +215,8 @@
 		D4B809D7243D30590024EE04 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D4B809E3243D387A0024EE04 /* FactsTableView.swift */,
+				D43F31D1243DD1E6009E789C /* FactsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B809DF243D32FE0024EE04 /* AppBundle.swift */,
+				D43F31CD243DB6D8009E789C /* UIView+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -389,13 +398,16 @@
 			files = (
 				D4B809DA243D30590024EE04 /* FactDetails.swift in Sources */,
 				D4B809D1243D30530024EE04 /* NetworkManager.swift in Sources */,
+				D43F31CE243DB6D8009E789C /* UIView+Extension.swift in Sources */,
 				D4B809DD243D30590024EE04 /* FactsService.swift in Sources */,
 				D4B809DC243D30590024EE04 /* FactsViewController.swift in Sources */,
 				D4B809DB243D30590024EE04 /* FactsViewModel.swift in Sources */,
 				D4B809E0243D32FE0024EE04 /* AppBundle.swift in Sources */,
 				D436756C243CEBEC0004A1C1 /* AppDelegate.swift in Sources */,
 				D436756E243CEBEC0004A1C1 /* SceneDelegate.swift in Sources */,
+				D43F31D2243DD1E6009E789C /* FactsTableViewCell.swift in Sources */,
 				D4B809E2243D33590024EE04 /* FactsConstants.swift in Sources */,
+				D4B809E4243D387A0024EE04 /* FactsTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

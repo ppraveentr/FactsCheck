@@ -10,10 +10,22 @@ import UIKit
 
 final class FactsViewController: UIViewController {
 
-    let viewModel = FactsViewModel()
+     //ViewModel for facts
+    private(set) lazy var viewModel = FactsViewModel(self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.refreshFacts()
+        setupView()
     }
+    
+    func setupView() {
+        viewModel.setupModel()
+        
+        self.embedController(viewModel.factsTableView) { factView in
+            self.view.embedView(factView)
+        }
+    }
+}
+
+extension FactsViewController: FactsViewModelProtocol {
 }
