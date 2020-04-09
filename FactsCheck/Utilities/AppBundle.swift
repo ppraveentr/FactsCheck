@@ -15,13 +15,13 @@ extension String {
     }
     
     private func getLocalizedValue(tableName: String? = nil) -> String? {
-        let value = NSLocalizedString(self, tableName: tableName, bundle: Bundle.accountModule, comment: self)
+        let value = NSLocalizedString(self, tableName: tableName, bundle: Bundle.factsModule, comment: self)
         return value != self ? value : nil
     }
 }
 
 extension Bundle {
-    class var accountModule: Bundle {
+    class var factsModule: Bundle {
         return Bundle(for: AppBundle.self)
     }
 }

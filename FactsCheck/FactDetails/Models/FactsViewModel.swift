@@ -8,22 +8,83 @@
 
 import UIKit
 
-final class FactsViewModel {
+protocol FactsViewDelegate: NSObject {
+    func refreshTitle()
+}
+
+protocol FactsTableViewModelProtocol: AnyObject {
+    func numberOfRowsInSection() -> Int
+    func data(forIndexPath indexPath: IndexPath) -> Fact?
+    func getFactDetails()
+}
+
+protocol FactsViewModelViewing {
+    func title() -> String
+    func getFactDetails()
+}
+
+final class FactsViewModel: FactsViewModelViewing {
     
-    //factDetails hold's the data from the backend
-    var facts: FactDetails? {
+    //Facts contoller delegate
+    private(set) unowned var delegate: FactsViewDelegate?
+    // Facts List content view
+    private(set) lazy var contentView: FactsTableViewProtocol = {
+        FactsTableView(self)
+    }()
+
+    //factDetails hold's the data from the backend and refresh view on update.
+    private(set) var factDetails: FactDetails? {
         didSet {
-            print(self.facts ?? "")
+            refreshViewOnUpdate()
         }
+    }
+    
+    init(_ delegate: FactsViewDelegate) {
+        self.delegate = delegate
+    }
+    
+    func setupModel() {
+        //Fetch Fact details from backend
+        self.getFactDetails()
     }
 }
 
+// MARK: FactsViewModelViewing
+extension FactsViewModel {
+    // Update view's title
+    func title() -> String {
+        return factDetails?.title ?? ""
+    }
+    
+    // refesh ViewContoller's data
+    private func refreshViewOnUpdate() {
+        // refresh tableView content
+        contentView.refreshContent()
+        // update view's title
+        delegate?.refreshTitle()
+    }
+}
+
+// MARK: FactsTableViewModelProtocol
+extension FactsViewModel: FactsTableViewModelProtocol {
+    // no of facts to show
+    func numberOfRowsInSection() -> Int {
+        return factDetails?.facts?.count ?? 0
+    }
+    
+    // fact data for the cell
+    func data(forIndexPath indexPath: IndexPath) -> Fact? {
+        return factDetails?.facts?[indexPath.row]
+    }
+}
+
+// MARK: Service Get Fact Details
 extension FactsViewModel {
     //API call to fetch the Facts
-    func refreshFacts(completion: (() -> Void)? = nil) {
+    func getFactDetails() {
         FactsService.fetchFactsList { [weak self] factsData, error in
             //assign to local facts array to our returned model to refresh View
-            self?.facts = factsData
+            self?.factDetails = factsData
         }
     }
 }

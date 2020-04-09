@@ -10,10 +10,27 @@ import UIKit
 
 final class FactsViewController: UIViewController {
 
-    let viewModel = FactsViewModel()
+     //ViewModel for facts
+    private(set) lazy var viewModel = FactsViewModel(self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.refreshFacts()
+        setupView()
+    }
+    
+    func setupView() {
+        viewModel.setupModel()
+        
+        // Embed tableView as container
+        self.embedController(viewModel.contentView) { factView in
+            self.view.embedView(factView)
+        }
+    }
+}
+
+extension FactsViewController: FactsViewDelegate {
+    func refreshTitle() {
+        // Update view's title
+        self.title = viewModel.title()
     }
 }
