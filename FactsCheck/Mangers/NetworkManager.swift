@@ -37,14 +37,6 @@ final class NetworkManager: NetworkManagerProtocol {
      */
     func makeService<T: Codable>(url: URL, responseType: T.Type, completion: CompletionHandler?) {
         
-        // stubbing data for testing
-        if let mockData = NetworkManager.mockData(responseType: responseType) {
-            DispatchQueue.main.async {
-                completion?(.success(mockData))
-            }
-            return
-        }
-        
         let dataTask = session.dataTask(with: url) { (data, response, networkError) in
             // parsing not requied if completion is provided
             guard let completion = completion else { return }
@@ -134,19 +126,5 @@ private extension NetworkManager {
     static func encodedData<T: Codable>(_ jsonData: Data) throws -> T {
         let model = try JSONDecoder().decode(T.self, from: jsonData)
         return model
-    }
-}
-
-extension NetworkManager {
-    static func mockData<T: Codable>(responseType: T.Type) -> T? {
-        if let path = Bundle.main.path(forResource: "Mockfacts", ofType: "json") {
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
-                // parse unwrappedData to Codable Model as requested
-                if let properData = try? formatedData(data) {
-                    return try? encodedData(properData)
-                }
-            }
-        }
-        return nil
     }
 }

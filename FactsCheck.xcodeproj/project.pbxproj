@@ -58,7 +58,6 @@
 		977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsCheck.release.xcconfig"; path = "Target Support Files/Pods-FactsCheck/Pods-FactsCheck.release.xcconfig"; sourceTree = "<group>"; };
 		D42A3879243F51E70065576D /* FactsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsServiceTests.swift; sourceTree = "<group>"; };
 		D42A387C243F53B70065576D /* Mockfacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mockfacts.json; sourceTree = "<group>"; };
-		D42A3884243F55080065576D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D42A388C243F56F30065576D /* XCTestcase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestcase+Extension.swift"; sourceTree = "<group>"; };
 		D42A388F243F5A7B0065576D /* AppBundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundleTests.swift; sourceTree = "<group>"; };
 		D42A3891243F5BA70065576D /* FactsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewModelTests.swift; sourceTree = "<group>"; };
@@ -145,14 +144,6 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		D42A3883243F55080065576D /* FactsMockBundle */ = {
-			isa = PBXGroup;
-			children = (
-				D42A3884243F55080065576D /* Info.plist */,
-			);
-			path = FactsMockBundle;
-			sourceTree = "<group>";
-		};
 		D42A389B243F67200065576D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +163,6 @@
 			children = (
 				D436756A243CEBEC0004A1C1 /* FactsCheck */,
 				D4367581243CEBEE0004A1C1 /* FactsCheckTests */,
-				D42A3883243F55080065576D /* FactsMockBundle */,
 				D4367569243CEBEC0004A1C1 /* Products */,
 				8757E44AC99CAFBFA51C57D3 /* Pods */,
 				98C6CB5E89FBB10BECFE6312 /* Frameworks */,
