@@ -7,3 +7,4 @@ A “proof of concept” app which consumes a REST service and displays photos w
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ppraveentr_FactsCheck&metric=alert_status)](https://sonarcloud.io/dashboard?id=ppraveentr_FactsCheck)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ppraveentr_FactsCheck&metric=ncloc)](https://sonarcloud.io/dashboard?id=ppraveentr_FactsCheck)
+[![Build Status](https://travis-ci.org/ppraveentr/FactsCheck.svg?branch=master)](https://travis-ci.org/ppraveentr/FactsCheck)
