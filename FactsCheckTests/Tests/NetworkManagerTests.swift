@@ -14,27 +14,26 @@ final class NetworkManagerTests: XCTestCase {
     private var sut: NetworkManagerProtocol!
     private var path: String!
     
-    private var mockFileURL: URL? {
+    private var mockFileURL: URL {
         XCTAssertNotNil(path)
-        return URL(fileURLWithPath: path)
+        let url = URL(fileURLWithPath: path)
+        if url.absoluteString.isEmpty {
+            XCTFail("mockFileURL fails")
+        }
+        return url
     }
     
     override func setUp() {
         super.setUp()
+        path = Bundle.testCaseModule.path(forResource: "Mockfacts", ofType: "json")
         sut = NetworkManager.shared
     }
     
     func testMakeService() {
         //let
-        path = Bundle.testCaseModule.path(forResource: "Mockfacts", ofType: "json")
-        let promise = expectation(description: "Status code: 200")
-        guard let url = mockFileURL else {
-            XCTFail("mockFileURL fails")
-            return 
-        }
-        
+        let promise = expectation(description: "FactDetails is nil")
         // when
-        sut.makeService(url: url, responseType: FactDetails.self) { result in
+        sut.makeService(url: mockFileURL, responseType: FactDetails.self) { result in
             // then
             XCTAssertNotNil(result)
             let responseType = try? result.get() as? FactDetails
@@ -50,13 +49,9 @@ final class NetworkManagerTests: XCTestCase {
     func testDownloadedImage() {
         //let
         path = Bundle.testCaseModule.path(forResource: "mockImage", ofType: "png")
-        let promise = expectation(description: "Status code: 200")
-        guard let url = mockFileURL else {
-            XCTFail("mockFileURL fails")
-            return
-        }
-        // when
-        sut.downloadedImage(url: url, allowCache: true) { image in
+        let promise = expectation(description: "image is nil")
+       // when
+        sut.downloadedImage(url: mockFileURL, allowCache: true) { image in
             // then
             XCTAssertNotNil(image)
             promise.fulfill()
@@ -67,14 +62,9 @@ final class NetworkManagerTests: XCTestCase {
     
     func testDownloadedImageFails() {
         //let
-        path = Bundle.testCaseModule.path(forResource: "Mockfacts", ofType: "json")
-        let promise = expectation(description: "Status code: 200")
-        guard let url = mockFileURL else {
-            XCTFail("mockFileURL fails")
-            return
-        }
+        let promise = expectation(description: "image download fails")
         // when
-        sut.downloadedImage(url: url, allowCache: true) { image in
+        sut.downloadedImage(url: mockFileURL, allowCache: true) { image in
             // then
             XCTAssertNil(image)
             promise.fulfill()
