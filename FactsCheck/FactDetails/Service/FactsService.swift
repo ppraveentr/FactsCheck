@@ -18,7 +18,7 @@ typealias FactsCompletionHandler = (FactDetails?, FactsError?) -> Void
 
 enum FactsService {
     
-    static let hostUrl = URL(string: BaseUrl.localized)
+    static let hostUrl = URL(string: kBaseUrl.localized)
     
      //make the API call to get model
     static func fetchFactsList(completion: @escaping FactsCompletionHandler) {
@@ -36,7 +36,9 @@ enum FactsService {
                     if var details = (model as? FactDetails) {
                         details.trimInvalidFacts()
                         // and update view
-                        completion(details, nil)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            completion(details, nil)
+                        }
                     }
                 default:
                     // onError

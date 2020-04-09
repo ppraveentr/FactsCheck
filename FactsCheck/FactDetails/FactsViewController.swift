@@ -19,7 +19,7 @@ final class FactsViewController: UIViewController {
     }
     
     func setupView() {
-        viewModel.setupModel()
+        viewModel.refeshViewDetails()
         
         // Embed tableView as container
         self.embedController(viewModel.contentView) { factView in
@@ -32,5 +32,15 @@ extension FactsViewController: FactsViewDelegate {
     func refreshTitle() {
         // Update view's title
         self.title = viewModel.title()
+    }
+    
+    func showAlert(message: String) {
+        let retryAction: UIAlertAction = {
+            UIAlertAction(title: "retry", style: .default) { [weak self] _ in
+                self?.viewModel.refeshViewDetails()
+            }
+        }()
+        
+        AlertView.shared.showAlert(title: kSeviceErrorTitle.localized, message: message, actions: [retryAction])
     }
 }

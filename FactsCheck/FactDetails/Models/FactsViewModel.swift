@@ -8,21 +8,27 @@
 
 import UIKit
 
+// MARK: Protocols
+// FactsViewContoller: delegate protocol
 protocol FactsViewDelegate: NSObject {
     func refreshTitle()
+    func showAlert(message: String)
 }
 
+// tableView: dataSource Protocol
 protocol FactsTableViewModelProtocol: AnyObject {
     func numberOfRowsInSection() -> Int
     func data(forIndexPath indexPath: IndexPath) -> Fact?
     func getFactDetails()
 }
 
+// FactsViewContoller: viewModel protocol
 protocol FactsViewModelViewing {
     func title() -> String
     func getFactDetails()
 }
 
+// MARK: ViewModel
 final class FactsViewModel: FactsViewModelViewing {
     
     //Facts contoller delegate
@@ -43,7 +49,7 @@ final class FactsViewModel: FactsViewModelViewing {
         self.delegate = delegate
     }
     
-    func setupModel() {
+    func refeshViewDetails() {
         //Fetch Fact details from backend
         self.getFactDetails()
     }
@@ -82,7 +88,15 @@ extension FactsViewModel: FactsTableViewModelProtocol {
 extension FactsViewModel {
     //API call to fetch the Facts
     func getFactDetails() {
+        //Show spinner while fetching content from Backend
+        ActivityIndicator.start()
         FactsService.fetchFactsList { [weak self] factsData, error in
+            // Hide spinner
+            ActivityIndicator.stop()
+            guard factsData != nil else {
+                self?.delegate?.showAlert(message: kSeviceErrorMessage.localized)
+                return
+            }
             //assign to local facts array to our returned model to refresh View
             self?.factDetails = factsData
         }
