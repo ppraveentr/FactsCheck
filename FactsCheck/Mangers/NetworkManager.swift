@@ -15,10 +15,18 @@ enum NetworkError: Error {
 
 typealias CompletionHandler = (Result<Codable, NetworkError>) -> Void
 
-final class NetworkManager {
+protocol NetworkManagerProtocol {
+    static var shared: NetworkManagerProtocol { get }
     
+    func makeService<T: Codable>(url: URL, responseType: T.Type, completion: CompletionHandler?)
+    func downloadedImage(url: URL, allowCache: Bool, _ comletionHandler: ImageViewComletionHandler?)
+}
+
+final class NetworkManager: NetworkManagerProtocol {
+    static let shared: NetworkManagerProtocol = NetworkManager()
+
     //create a session and dataTask on that session to get data/response/error
-    private static let session: URLSession = URLSession.shared
+    private let session: URLSession = URLSession.shared
     private static var imageCache = NSCache<NSString, UIImage>()
 
     /**
@@ -27,7 +35,15 @@ final class NetworkManager {
      - parameter responseType: Codable.Type to format data to requested Resposne model
      - parameter completion: return's Result on completion of request in Main thread
      */
-    static func makeService<T: Codable>(url: URL, responseType: T.Type, completion: CompletionHandler?) {
+    func makeService<T: Codable>(url: URL, responseType: T.Type, completion: CompletionHandler?) {
+        
+        // stubbing data for testing
+        if let mockData = NetworkManager.mockData(responseType: responseType) {
+            DispatchQueue.main.async {
+                completion?(.success(mockData))
+            }
+            return
+        }
         
         let dataTask = session.dataTask(with: url) { (data, response, networkError) in
             // parsing not requied if completion is provided
@@ -35,9 +51,9 @@ final class NetworkManager {
             
             do {
                 //unwrap returned data
-                let properData = try formatedData(data)
+                let properData = try NetworkManager.formatedData(data)
                 // parse unwrappedData to Codable Model as requested
-                let model: T? = try encodedData(properData)
+                let model: T? = try NetworkManager.encodedData(properData)
                 
                 //Run on the main queue as completion handler handles UI display and we don't want to block any UI code.
                 DispatchQueue.main.async {
@@ -62,8 +78,8 @@ final class NetworkManager {
      - parameter url: Image's url from which need to download
      - parameter contentMode: ImageView's content mode, defalut to 'scaleAspectFit'
      */
-    static func downloadedImage(url: URL, allowCache: Bool = true, _ comletionHandler: ImageViewComletionHandler? = nil) {
-        let localCache = allowCache ? imageCache : nil
+    func downloadedImage(url: URL, allowCache: Bool = true, _ comletionHandler: ImageViewComletionHandler? = nil) {
+        let localCache = allowCache ? NetworkManager.imageCache : nil
         
         // Cache image based on URL
         let cacheKey = url.absoluteString as NSString
@@ -118,5 +134,19 @@ private extension NetworkManager {
     static func encodedData<T: Codable>(_ jsonData: Data) throws -> T {
         let model = try JSONDecoder().decode(T.self, from: jsonData)
         return model
+    }
+}
+
+extension NetworkManager {
+    static func mockData<T: Codable>(responseType: T.Type) -> T? {
+        if let path = Bundle.main.path(forResource: "Mockfacts", ofType: "json") {
+            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
+                // parse unwrappedData to Codable Model as requested
+                if let properData = try? formatedData(data) {
+                    return try? encodedData(properData)
+                }
+            }
+        }
+        return nil
     }
 }

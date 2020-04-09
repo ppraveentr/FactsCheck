@@ -63,9 +63,7 @@ extension FactsTableView: FactsTableViewProtocol {
     
     @objc func pullToRefesh(_ sender: AnyObject) {
         // fetch latest details to refresh table view
-        DispatchQueue.main.async {
-            self.dataSourceModel.getFactDetails()
-        }
+        dataSourceModel.getFactDetails()
     }
 }
 
@@ -74,7 +72,7 @@ private extension FactsTableView {
         static let estimatedRowHeight: CGFloat = 71.0
     }
     
-    private func configureView() {
+    func configureView() {
         // set height for rows
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.estimatedRowHeight
