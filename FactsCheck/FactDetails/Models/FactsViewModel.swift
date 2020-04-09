@@ -37,6 +37,9 @@ final class FactsViewModel: FactsViewModelViewing {
     private(set) lazy var contentView: FactsTableViewProtocol = {
         FactsTableView(self)
     }()
+    
+    // API Service Module
+    var factsService: FactsServiceProtocol = FactsService.shared
 
     //factDetails hold's the data from the backend and refresh view on update.
     private(set) var factDetails: FactDetails? {
@@ -90,7 +93,8 @@ extension FactsViewModel {
     func getFactDetails() {
         //Show spinner while fetching content from Backend
         ActivityIndicator.start()
-        FactsService.fetchFactsList { [weak self] factsData, error in
+        // make API call
+        factsService.fetchFactsList(url: nil) { [weak self] factsData, error in
             // Hide spinner
             ActivityIndicator.stop()
             guard factsData != nil else {

@@ -16,20 +16,30 @@ enum FactsError: Error {
 //typealias
 typealias FactsCompletionHandler = (FactDetails?, FactsError?) -> Void
 
-enum FactsService {
+protocol FactsServiceProtocol {
+    var hostUrl: URL? { get }
+    var networkManager: NetworkManagerProtocol { get set }
+
+    func fetchFactsList(url: URL?, completion: @escaping FactsCompletionHandler)
+}
+
+final class FactsService: FactsServiceProtocol {
+    static var shared = FactsService()
     
-    static let hostUrl = URL(string: kBaseUrl.localized)
-    
+    var networkManager = NetworkManager.shared
+    private(set) var hostUrl = URL(string: kBaseUrl.localized)
+
      //make the API call to get model
-    static func fetchFactsList(completion: @escaping FactsCompletionHandler) {
+    func fetchFactsList(url: URL? = nil, completion: @escaping FactsCompletionHandler) {
+        let serviceURL = url ?? hostUrl
         //unwrap API endpoint
-        guard let url = hostUrl else {
+        guard let url = serviceURL else {
             completion(nil, .urlInvalid)
             return
         }
         
         // make api call to fetch details.
-        NetworkManager.makeService(url: url, responseType: FactDetails.self) { result in
+        networkManager.makeService(url: url, responseType: FactDetails.self) { result in
             switch result {
                 case let .success(model) where model is FactDetails:
                     // onSuccess, remove invlaid details from the list

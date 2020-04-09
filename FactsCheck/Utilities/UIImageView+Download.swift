@@ -24,7 +24,7 @@ extension UIImageView {
         contentMode = mode
 
         // Download Image from async in background
-        NetworkManager.downloadedImage(url: url) { image in
+        NetworkManager.shared.downloadedImage(url: url, allowCache: true) { image in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.image = image
