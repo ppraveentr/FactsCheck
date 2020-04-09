@@ -6,4 +6,6 @@
 //  Copyright © 2020 Praveen P. All rights reserved.
 //
 
-let BaseUrl = "BaseUrl"
+let kBaseUrl = "BaseUrl"
+let kSeviceErrorTitle = "ServiceErrorTitle"
+let kSeviceErrorMessage = "ServiceErrorMessage"

@@ -6,4 +6,9 @@
   Copyright © 2020 Praveen P. All rights reserved.
 */
 
+// API URL
 "BaseUrl" = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";
+
+// Error
+"ServiceErrorTitle" = "Something's Not Right";
+"ServiceErrorMessage" = "We’re experiencing a technical glitch. Please try again later.";
