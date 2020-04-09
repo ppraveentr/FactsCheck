@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -15,13 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // setup RootView contoller manually
         if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            
-            let navigation = FactsViewController.navigationController()
-            window.rootViewController = navigation
-            
-            self.window = window
-            window.makeKeyAndVisible()
+            window = UIWindow(windowScene: windowScene)
+            window?.setupFactRootViewContoller()
         }
     }
 
