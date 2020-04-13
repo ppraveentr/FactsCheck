@@ -40,7 +40,6 @@
 		D4B809E0243D32FE0024EE04 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809DF243D32FE0024EE04 /* AppBundle.swift */; };
 		D4B809E2243D33590024EE04 /* FactsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809E1243D33590024EE04 /* FactsConstants.swift */; };
 		D4B809E4243D387A0024EE04 /* FactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B809E3243D387A0024EE04 /* FactsTableView.swift */; };
-		DC168C425F9B4F927EA509C8 /* Pods_FactsCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		942959A57404AB628359D038 /* Pods-FactsCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsCheck.debug.xcconfig"; path = "Target Support Files/Pods-FactsCheck/Pods-FactsCheck.debug.xcconfig"; sourceTree = "<group>"; };
-		977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsCheck.release.xcconfig"; path = "Target Support Files/Pods-FactsCheck/Pods-FactsCheck.release.xcconfig"; sourceTree = "<group>"; };
 		D42A3879243F51E70065576D /* FactsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsServiceTests.swift; sourceTree = "<group>"; };
 		D42A387C243F53B70065576D /* Mockfacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mockfacts.json; sourceTree = "<group>"; };
 		D42A388C243F56F30065576D /* XCTestcase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestcase+Extension.swift"; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 		D4B809DF243D32FE0024EE04 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
 		D4B809E1243D33590024EE04 /* FactsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsConstants.swift; sourceTree = "<group>"; };
 		D4B809E3243D387A0024EE04 /* FactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableView.swift; sourceTree = "<group>"; };
-		E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC168C425F9B4F927EA509C8 /* Pods_FactsCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,18 +113,8 @@
 		8757E44AC99CAFBFA51C57D3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				942959A57404AB628359D038 /* Pods-FactsCheck.debug.xcconfig */,
-				977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		98C6CB5E89FBB10BECFE6312 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E8B9DB683D863FDD5B03EC75 /* Pods_FactsCheck.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D42A387B243F53B70065576D /* Mocks */ = {
@@ -165,7 +150,6 @@
 				D4367581243CEBEE0004A1C1 /* FactsCheckTests */,
 				D4367569243CEBEC0004A1C1 /* Products */,
 				8757E44AC99CAFBFA51C57D3 /* Pods */,
-				98C6CB5E89FBB10BECFE6312 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,7 +264,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4367592243CEBEE0004A1C1 /* Build configuration list for PBXNativeTarget "FactsCheck" */;
 			buildPhases = (
-				ECAB8EB8E95F62931A3167A8 /* [CP] Check Pods Manifest.lock */,
 				D4367564243CEBEC0004A1C1 /* Sources */,
 				D4367565243CEBEC0004A1C1 /* Frameworks */,
 				D4367566243CEBEC0004A1C1 /* Resources */,
@@ -371,31 +354,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		ECAB8EB8E95F62931A3167A8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FactsCheck-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4367564243CEBEC0004A1C1 /* Sources */ = {
@@ -578,7 +536,6 @@
 		};
 		D4367593243CEBEE0004A1C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 942959A57404AB628359D038 /* Pods-FactsCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -597,7 +554,6 @@
 		};
 		D4367594243CEBEE0004A1C1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 977F3239BEC3802510E737E3 /* Pods-FactsCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
