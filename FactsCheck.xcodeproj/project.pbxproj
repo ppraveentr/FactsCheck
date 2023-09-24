@@ -94,6 +94,13 @@
 		D4B809DF243D32FE0024EE04 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
 		D4B809E1243D33590024EE04 /* FactsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsConstants.swift; sourceTree = "<group>"; };
 		D4B809E3243D387A0024EE04 /* FactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableView.swift; sourceTree = "<group>"; };
+		DE6F59A6269C6EB0008B6AC7 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = SOURCE_ROOT; };
+		DE6F59A7269C6EB7008B6AC7 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = SOURCE_ROOT; };
+		DE6F59A8269C6EC3008B6AC7 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = SOURCE_ROOT; };
+		DE6F59A9269C6EC3008B6AC7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		DE6F59AA269C6ECA008B6AC7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		DE6F59AB269C6ECF008B6AC7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		DE6F59AC269C6ED9008B6AC7 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codecov.yml; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +168,7 @@
 		D436755F243CEBEC0004A1C1 = {
 			isa = PBXGroup;
 			children = (
+				DE6F59A5269C6E98008B6AC7 /* GitFiles */,
 				D436756A243CEBEC0004A1C1 /* FactsCheck */,
 				D4367581243CEBEE0004A1C1 /* FactsCheckTests */,
 				D4367569243CEBEC0004A1C1 /* Products */,
@@ -271,6 +279,20 @@
 				D4375BD3243F41A80051AFAF /* AlertView.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DE6F59A5269C6E98008B6AC7 /* GitFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DE6F59AB269C6ECF008B6AC7 /* README.md */,
+				DE6F59A9269C6EC3008B6AC7 /* .gitignore */,
+				DE6F59A8269C6EC3008B6AC7 /* .travis.yml */,
+				DE6F59AA269C6ECA008B6AC7 /* Podfile */,
+				DE6F59A6269C6EB0008B6AC7 /* Fastfile */,
+				DE6F59A7269C6EB7008B6AC7 /* Gemfile */,
+				DE6F59AC269C6ED9008B6AC7 /* codecov.yml */,
+			);
+			path = GitFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
